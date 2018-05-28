@@ -1,0 +1,18 @@
+Origines de GraphQL
+-> Début en 2012
+-> Simplification entre le schéma des requêtes et leur retour.
+
+
+Objectifs :
+-> définition d'un schéma de données,
+-> données hiérarchisées,
+-> données fortement typées,
+-> protocolaire
+-> 
+
+Clients
+- PHP : graphql-php, graphql-relay-php,
+- Python : graphene,
+- .net : graphql-net, graphql-dotnet,
+- Node : GraphQL.js, express-graphql, apollo-server
+- React : voir au-dessus
