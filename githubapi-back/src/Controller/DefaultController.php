@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\GHApiClientService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -16,6 +17,20 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends Controller
 {
     /**
+     * @var GHApiClientService
+     */
+    private $ghApiClientService;
+
+    /**
+     * DefaultController constructor.
+     * @param GHApiClientService $service
+     */
+    public function __construct(GHApiClientService $service)
+    {
+        $this->ghApiClientService = $service;
+    }
+
+    /**
      * @Route("/", name="index")
      * @Method({"GET"})
      * @return \Symfony\Component\HttpFoundation\Response
@@ -29,7 +44,8 @@ class DefaultController extends Controller
             ->getForm();
         return $this->render('base.html.twig', array(
             'form' => $form->createView(),
-            'repositories' => []
+            'repositories' => [],
+            'user'  => [],
         ));
     }
 
@@ -51,11 +67,22 @@ class DefaultController extends Controller
 
         $data = $form->getData();
 
-        dump($data['gh_username']);
+        $results = $this->ghApiClientService->getRepositories($data['gh_username']);
 
+        $repositories = array();
+        foreach ($results['user']['repositories']['edges'] as $edge) {
+            $repositories[] = $edge['node'];
+        }
+
+        $user = array(
+            'login' => $data['gh_username'],
+            'avatar'=> $results['user']['avatarUrl'],
+            'name'  => $results['user']['name'],
+        );
         return $this->render('base.html.twig', array(
             'form' => $form->createView(),
-            'repositories' => []
+            'repositories' => $repositories,
+            'user'  => $user,
         ));
     }
 }
