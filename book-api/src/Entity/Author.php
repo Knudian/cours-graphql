@@ -122,7 +122,7 @@ class Author extends AbstractEntity implements \JsonSerializable
             'id'    => $this->getId(),
             'name'  => $this->getLastName(),
             'firstName' => $this->getFirstName(),
-            'birthDate' => $this->getBirthDate(),
+            'birthDate' => $this->getBirthDate()->format('Y-m-d h:m:i'),
             'bookCount' => $this->getBooks()->count()
         );
     }

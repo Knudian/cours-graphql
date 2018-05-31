@@ -1,0 +1,38 @@
+Query:
+    type: object
+    config:
+        fields:
+            author:
+                type: "Author"
+                args:
+                    id:
+                        description: "Resolves using the author ID"
+                        type: "Int!"
+                resolve: "@=resolver('Author', [args])"
+            book:
+                type: "Book"
+                args:
+                    id:
+                        description: "Resolves using the book ID"
+                        type: "Int!"
+                resolve: "@=resolver('Book', [args])"
+            authorList:
+                type: "[Author]"
+                args:
+                    page:
+                        description: "List's page to get"
+                        type: "Int!"
+                    perPage:
+                        description: "Amount of results per page"
+                        type: "Int"
+                resolve: "@=resolver('AuthorList', [args])"
+            bookList:
+                type: "[Book]"
+                args:
+                    page:
+                        description: "List's page to get"
+                        type: "Int!"
+                    perPage:
+                        description: "Amount of results per page"
+                        type: "Int"
+                resolve: "@=resolver('BookList', [args])"

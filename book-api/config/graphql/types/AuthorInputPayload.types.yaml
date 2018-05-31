@@ -1,0 +1,10 @@
+AuthorInputPayload:
+    type: object
+    config:
+        fields:
+            firstName:
+                type: "String!"
+            lastName:
+                type: "String!"
+            birthDate:
+                type: "DateTime!"

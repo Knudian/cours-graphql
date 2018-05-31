@@ -1,0 +1,19 @@
+BookInput:
+    type: input-object
+    config:
+        fields:
+            title:
+                type: "String"
+                description: "The book title"
+            releaseDate:
+                type: "DateTime"
+                description: "The release date of the book"
+            type:
+                type: "String"
+                description: "The type of book (sci-fi, ...)"
+            price:
+                type: "Float"
+                description: "The book's price, in euros"
+            author:
+                type: "AuthorInput"
+                description: "The book writer ID"

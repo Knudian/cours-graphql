@@ -1,0 +1,16 @@
+Mutation:
+    type: object
+    config:
+        fields:
+            authorInput:
+                type: AuthorInputPayload!
+                args:
+                    input:
+                        type: AuthorInput
+                resolve: "@=resolver('AuthorInput', [args])"
+            bookInput:
+                type: BookInputPayload!
+                args:
+                    input:
+                        type: BookInput
+                resolve: "@=resolver('BookInput', [args])"

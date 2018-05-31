@@ -71,6 +71,15 @@
     "ocramius/proxy-manager": {
         "version": "2.2.0"
     },
+    "overblog/graphiql-bundle": {
+        "version": "0.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.1",
+            "ref": "fe8d172f2480efc598f5a8be0e732656d3594cec"
+        }
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -200,6 +209,21 @@
             "ref": "f8a63faa0d9521526499c0a8f403c9964ecb0527"
         }
     },
+    "symfony/templating": {
+        "version": "v4.1.0"
+    },
+    "symfony/twig-bridge": {
+        "version": "v4.1.0"
+    },
+    "symfony/twig-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "f75ac166398e107796ca94cc57fa1edaa06ec47f"
+        }
+    },
     "symfony/web-server-bundle": {
         "version": "3.3",
         "recipe": {
@@ -211,6 +235,9 @@
     },
     "symfony/yaml": {
         "version": "v4.0.11"
+    },
+    "twig/twig": {
+        "version": "v2.4.8"
     },
     "zendframework/zend-code": {
         "version": "3.3.0"

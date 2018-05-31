@@ -1,0 +1,13 @@
+AuthorInput:
+    type: input-object
+    config:
+        fields:
+            firstName:
+                type: "String!"
+                description: "The name of the Author (ie : John in John Doe)"
+            lastName:
+                type: "String!"
+                description: "The last name of the Author (ie: Doe in John Doe)"
+            birthDate:
+                type: "DateTime!"
+                description: "The date of birth (format: YYYY-MM-DD)"
