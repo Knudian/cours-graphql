@@ -20,6 +20,7 @@
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "overblog/graphiql-bundle": "^0.1.0",
         "symfony/dotenv": "^4.0",
         "symfony/maker-bundle": "^1.5",
