@@ -1,0 +1,11 @@
+UserInputPayload:
+    type: object
+    config:
+        fields:
+        fields:
+            username:
+                type: "String!"
+            password:
+                type: "String!"
+            email:
+                type: "String!"

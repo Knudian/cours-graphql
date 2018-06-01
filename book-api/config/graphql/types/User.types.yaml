@@ -1,0 +1,21 @@
+User:
+    type: object
+    config:
+        description: "An app user"
+        fields:
+            id:
+                type: "Int!"
+            username:
+                type: "String"
+            firstName:
+                type: "String"
+            lastName:
+                type: "String"
+            lastLogin:
+                type: "DateTime"
+            createdAt:
+                type: "DateTime"
+            isActive:
+                type: "Boolean"
+            email:
+                type: "String"

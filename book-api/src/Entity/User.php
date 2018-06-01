@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Constant\Role;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
 use Serializable;
@@ -58,7 +60,7 @@ class User implements UserInterface, JsonSerializable, Serializable
      * @var DateTime
      * @ORM\Column(type="datetime")
      */
-    private $createAt;
+    private $createdAt;
 
     /**
      * @var string[]
@@ -79,11 +81,17 @@ class User implements UserInterface, JsonSerializable, Serializable
     private $email;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\BookComment", mappedBy="user", orphanRemoval=true)
+     */
+    private $bookComments;
+
+    /**
      * User constructor.
      */
     public function __construct()
     {
-        $this->createAt  = new DateTime('now');
+        $this->createdAt  = new DateTime('now');
+        $this->bookComments = new ArrayCollection();
     }
 
     /**
@@ -187,9 +195,9 @@ class User implements UserInterface, JsonSerializable, Serializable
     /**
      * @return DateTime
      */
-    public function getCreateAt(): DateTime
+    public function getCreatedAt(): DateTime
     {
-        return $this->createAt;
+        return $this->createdAt;
     }
 
     /**
@@ -273,7 +281,7 @@ class User implements UserInterface, JsonSerializable, Serializable
             'id'        => $this->getId(),
             'username'  => $this->getUsername(),
             'lastLogin' => $this->getLastLogin(),
-            'createdAt' => $this->getCreateAt(),
+            'createdAt' => $this->getCreatedAt(),
             'roles'     => $this->getRoles(),
         );
     }
@@ -329,5 +337,36 @@ class User implements UserInterface, JsonSerializable, Serializable
     public function unserialize($serialized): void
     {
         [$this->id, $this->username, $this->password, $this->roles] = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    /**
+     * @return Collection|BookComment[]
+     */
+    public function getBookComments(): Collection
+    {
+        return $this->bookComments;
+    }
+
+    public function addBookComment(BookComment $bookComment): self
+    {
+        if (!$this->bookComments->contains($bookComment)) {
+            $this->bookComments[] = $bookComment;
+            $bookComment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBookComment(BookComment $bookComment): self
+    {
+        if ($this->bookComments->contains($bookComment)) {
+            $this->bookComments->removeElement($bookComment);
+            // set the owning side to null (unless already changed)
+            if ($bookComment->getUser() === $this) {
+                $bookComment->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

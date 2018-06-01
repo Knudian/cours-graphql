@@ -36,3 +36,9 @@ Query:
                         description: "Amount of results per page"
                         type: "Int"
                 resolve: "@=resolver('BookList', [args])"
+            user:
+                type: "User"
+                args:
+                    id:
+                        type: "Int!"
+                resolve: "@=resolver('User', [args])"

@@ -14,3 +14,9 @@ Mutation:
                     input:
                         type: BookInput
                 resolve: "@=resolver('BookInput', [args])"
+            userInput:
+                type: UserInputPayload!
+                args:
+                    input:
+                        type: UserInput
+                resolve: "@=resolver('UserInput', [args])"

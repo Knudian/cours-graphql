@@ -1,0 +1,15 @@
+UserInput:
+    type: input-object
+    config:
+        description: "An app user"
+        fields:
+            username:
+                type: "String!"
+            firstName:
+                type: "String"
+            lastName:
+                type: "String"
+            password:
+                type: "String!"
+            email:
+                type: "String!"
