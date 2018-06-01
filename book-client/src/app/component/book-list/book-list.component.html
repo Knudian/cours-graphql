@@ -1,0 +1,15 @@
+<main class="row">
+  <div class="col-12">
+    <h1 class="page-header"><a routerLink="/books/add" title="Add a book">+</a>Book list</h1>
+  </div>
+  <div class="col-2" *ngFor="let book of bookList">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ book.title }} <small><span class="badge badge-primary">{{ book.type }}</span></small></h5>
+        <p class="card-text">
+          <em>{{ book.author.firstName}} {{ book.author.lastName }}</em>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>

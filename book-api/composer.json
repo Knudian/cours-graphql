@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "lcobucci/jwt": "^3.2",
+        "nelmio/cors-bundle": "^1.5",
         "overblog/graphql-bundle": "^0.11.0",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/console": "^4.0",
